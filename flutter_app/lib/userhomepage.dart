@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/categ.dart';
 import 'package:flutter_app/chat2.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'workerdetail.dart';
+import 'booking.dart';
+
 
 class UserHomePage extends StatelessWidget {
   const UserHomePage({super.key});
@@ -41,9 +45,22 @@ class UserHomePage extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children: const [
-                  ListTile(leading: Icon(Icons.category), title: Text('Categories')),
-                  ListTile(leading: Icon(Icons.book_online), title: Text('My Bookings')),
+                children:  [
+                  ListTile(leading: Icon(Icons.category), title: Text('Categories'),
+                  onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const CategoriesPage()));
+                    },),
+                  ListTile(leading: Icon(Icons.book_online), title: Text('My Bookings'),
+                  onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MyBookingsPage()));
+                    },
+                  ),
                 ],
               ),
             ),
@@ -126,10 +143,20 @@ class UserHomePage extends StatelessWidget {
                         child: Icon(Icons.person, color: Color(0xff6b62f6)),
                       ),
                       title: Text('Worker Name ${index + 1}', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-                      subtitle: Text('Electrician | ★ 4.${index + 2}', style: GoogleFonts.poppins(fontSize: 13)),
+                      subtitle: Text('Electrician | ★ 4.${index + 2}', style: GoogleFonts.poppins(fontSize: 13),
+                      ),
                       trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey.shade600),
                       onTap: () {
-                        // Navigate to worker detail
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => WorkerDetailPage(
+                              name: 'Worker Name ${index + 1}',
+                              profession: 'Electrician',
+                              rating: 4.0 + index,
+                            ),
+                          ),
+                        );
                       },
                     ),
                   );
@@ -147,16 +174,6 @@ class UserHomePage extends StatelessWidget {
       MaterialPageRoute(builder: (context) => const Chat2()));
         },
         child: const Icon(Icons.chat_bubble_outline),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        selectedItemColor: const Color.fromARGB(255, 45, 147, 165),
-        unselectedItemColor: Colors.grey.shade600,
-        backgroundColor: Colors.white,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Profile'),
-        ],
       ),
     );
   }

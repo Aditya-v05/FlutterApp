@@ -243,16 +243,6 @@ class _WorkerHomePageState extends State<WorkerHomePage> {
         backgroundColor: const Color(0xff2D93A5),
         child: const Icon(Icons.chat),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        selectedItemColor: const Color.fromARGB(255, 45, 147, 165),
-        unselectedItemColor: Colors.grey.shade600,
-        backgroundColor: Colors.white,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-      ),
     );
   }
 }

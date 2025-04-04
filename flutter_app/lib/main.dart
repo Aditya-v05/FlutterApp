@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // Set the login screen as the starting page
-      initialRoute: '/home',
+      initialRoute: '/work',
 
       // Define all named routes
       routes: {
