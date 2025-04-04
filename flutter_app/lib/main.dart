@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/workerhomepage.dart';
+import 'userhomepage.dart';
 import 'login.dart';
-
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const myApp());
+  runApp(const MyApp());
 }
 
-class myApp extends StatelessWidget {
-  const myApp({super.key});
-   @override
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Log(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.cyan,
+          brightness: Brightness.light,
+        ),
+      ),
+      // Set the login screen as the starting page
+      initialRoute: '/home',
+
+      // Define all named routes
+      routes: {
+        '/login': (context) => const Log(),                 // Login screen
+        '/home': (context) => const UserHomePage(),   // Workers list
+        '/work': (context) => const WorkerHomePage()
+      },
     );
- }
+  }
 }
